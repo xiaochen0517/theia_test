@@ -128,33 +128,40 @@ export class WorkspaceFrontendContribution implements CommandContribution, Keybi
     registerCommands(commands: CommandRegistry): void {
         // Not visible/enabled on Windows/Linux in electron.
         commands.registerCommand(WorkspaceCommands.OPEN, {
+            isVisible: () => false,
             isEnabled: () => isOSX || !this.isElectron(),
-            isVisible: () => isOSX || !this.isElectron(),
+            // isVisible: () => isOSX || !this.isElectron(),
             execute: () => this.doOpen()
         });
         // Visible/enabled only on Windows/Linux in electron.
         commands.registerCommand(WorkspaceCommands.OPEN_FILE, {
+            isVisible: () => false,
             isEnabled: () => true,
             execute: () => this.doOpenFile()
         });
         // Visible/enabled only on Windows/Linux in electron.
         commands.registerCommand(WorkspaceCommands.OPEN_FOLDER, {
+            isVisible: () => false,
             isEnabled: () => true,
             execute: () => this.doOpenFolder()
         });
         commands.registerCommand(WorkspaceCommands.OPEN_WORKSPACE, {
+            isVisible: () => false,
             isEnabled: () => true,
             execute: () => this.doOpenWorkspace()
         });
         commands.registerCommand(WorkspaceCommands.CLOSE, {
+            isVisible: () => false,
             isEnabled: () => this.workspaceService.opened,
             execute: () => this.closeWorkspace()
         });
         commands.registerCommand(WorkspaceCommands.OPEN_RECENT_WORKSPACE, {
+            isVisible: () => false,
             execute: () => this.quickOpenWorkspace.select()
         });
         commands.registerCommand(WorkspaceCommands.SAVE_WORKSPACE_AS, {
-            isVisible: () => this.workspaceService.opened,
+            isVisible: () => false,
+            // isVisible: () => this.workspaceService.opened,
             isEnabled: () => this.workspaceService.opened,
             execute: () => this.saveWorkspaceAs()
         });

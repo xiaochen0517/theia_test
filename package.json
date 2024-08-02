@@ -58,6 +58,7 @@
     "yargs": "^15.3.1"
   },
   "scripts": {
+    "build-run": "yarn browser build && yarn browser start",
     "all": "yarn -s install && yarn -s lint && yarn -s build",
     "browser": "yarn -s --cwd examples/browser",
     "browser-only": "yarn -s --cwd examples/browser-only",
